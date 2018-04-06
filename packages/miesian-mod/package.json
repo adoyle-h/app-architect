@@ -1,0 +1,64 @@
+{
+  "name": "miesian-mod",
+  "version": "0.0.0",
+  "description": "",
+  "browser.main": "dist/index.js",
+  "browser.var": "MiesianMod",
+  "browser.format": "umd",
+  "main": "src/index.js",
+  "main.src": "src/index.js",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "miesian",
+    "mod"
+  ],
+  "scripts": {
+    "build": "rollup -c",
+    "pub": "npm run pub-patch",
+    "pub-patch": "npm-run-all version-patch pub-common",
+    "pub-minor": "npm-run-all version-minor pub-common",
+    "pub-major": "npm-run-all version-major pub-common",
+    "pub-common": "npm run build && tnpm publish && git push --tags && git rebase develop master && git push --all && git checkout develop",
+    "version-patch": "npm version patch -m 'Bump: patch version to %s'",
+    "version-minor": "npm version minor -m 'Bump: minor version to %s'",
+    "version-major": "npm version major -m 'Bump: major version to %s'",
+    "test": "ava"
+  },
+  "engines": {
+    "node": ">=8"
+  },
+  "author": "ADoyle <adoyle.h@gmail.com>",
+  "license": "Apache-2.0",
+  "homepage": "https://github.com/adoyle-h/miesian",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adoyle-h/miesian.git"
+  },
+  "bugs": {
+    "url": "https://github.com/adoyle-h/miesian/issues"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.39",
+    "@babel/preset-env": "^7.0.0-beta.39",
+    "ava": "^1.0.0-beta.3",
+    "babel-eslint": "^7.2.3",
+    "eslint": "^4.17.0",
+    "eslint-config-react-app": "^2.0.1",
+    "eslint-plugin-flowtype": "^2.40.1",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-prettier": "^2.3.1",
+    "eslint-plugin-react": "^7.5.1",
+    "npm-run-all": "^3.1.1",
+    "rollup": "^0.55.3",
+    "rollup-plugin-babel": "^4.0.0-beta.0",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.1.0",
+    "rollup-plugin-node-resolve": "^3.0.2"
+  }
+}
